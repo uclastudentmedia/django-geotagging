@@ -44,11 +44,16 @@ def add_edit_geotag(request, content_type_id, object_id,
     form = form_class(instance=geotag)
 
     context = RequestContext(request, {
-        'form': form,
-        'object' : object,
-        "google_key" : settings.GOOGLE_MAPS_API_KEY,
-        'object_content_type' : object_content_type,
-        'geotag' : geotag,
+        "form": form,
+        "geo_type": form_class._meta.model._meta.verbose_name,
+        "object": object,
+        "opts": object._meta,
+        "app_label": object_content_type.app_label,
+        "google_key": settings.GOOGLE_MAPS_API_KEY,
+        "object_content_type": object_content_type,
+        "geotag": geotag,
+        "changelist_link": reverse('admin_%s_%s_changelist' % (object_content_type.app_label, object_content_type.model)),
+        "change_link": reverse('admin_%s_%s_change' % (object_content_type.app_label, object_content_type.model), args=[object.id]),
     })
     return render_to_response(template, context_instance=context )
 
