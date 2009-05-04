@@ -32,8 +32,10 @@
       </ul>
     {% endblock %}
 
-    <input type="text" id="id_address">
-    <input type="submit" value="Center the map" onclick="move_to_geocode();">
+    <form onSubmit="return false;">
+        <input type="text" id="id_address">
+        <input type="submit" value="Center the map" onclick="move_to_geocode();">
+    </form>
 
     <form action="." method="post">
         <fieldset class="module aligned">
