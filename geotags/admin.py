@@ -29,6 +29,9 @@ class LinkToObjectMixin(object):
 
 
 class PointAdmin(admin.OSMGeoAdmin,LinkToObjectMixin):
+    default_lon = -10842765
+    default_lat = 4676723
+    default_zoom = 3
     extra_js = [GMAP.api_url + GMAP.key]
     map_template = 'gis/admin/google.html'
     list_filter = ('content_type','point' )
