@@ -29,9 +29,9 @@ class LinkToObjectMixin(object):
 
 
 class PointAdmin(admin.OSMGeoAdmin,LinkToObjectMixin):
-    default_lon = -10842765
-    default_lat = 4676723
-    default_zoom = 3
+    default_lon = getattr(settings, "GEO_DEFAULT_LON", 0)
+    default_lat = getattr(settings, "GEO_DEFAULT_LAT", 0)
+    default_zoom = getattr(settings, "GEO_DEFAULT_ZOOM", 4)
     extra_js = [GMAP.api_url + GMAP.key]
     map_template = 'gis/admin/google.html'
     list_filter = ('content_type','point' )
@@ -39,12 +39,18 @@ class PointAdmin(admin.OSMGeoAdmin,LinkToObjectMixin):
 
 
 class LineAdmin(admin.OSMGeoAdmin,LinkToObjectMixin):
+    default_lon = getattr(settings, "GEO_DEFAULT_LON", 0)
+    default_lat = getattr(settings, "GEO_DEFAULT_LAT", 0)
+    default_zoom = getattr(settings, "GEO_DEFAULT_ZOOM", 4)
     extra_js = [GMAP.api_url + GMAP.key]
     map_template = 'gis/admin/google.html'
     list_filter = ('content_type','line' )
     list_display = ('line', 'content_type', 'object_id','link_to_object')
 
 class PolygonAdmin(admin.OSMGeoAdmin,LinkToObjectMixin):
+    default_lon = getattr(settings, "GEO_DEFAULT_LON", 0)
+    default_lat = getattr(settings, "GEO_DEFAULT_LAT", 0)
+    default_zoom = getattr(settings, "GEO_DEFAULT_ZOOM", 4)
     extra_js = [GMAP.api_url + GMAP.key]
     map_template = 'gis/admin/google.html'
     list_filter = ('content_type','polygon' )
