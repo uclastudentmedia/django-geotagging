@@ -34,7 +34,7 @@ class PointAdmin(admin.OSMGeoAdmin,LinkToObjectMixin):
     default_zoom = getattr(settings, "GEO_DEFAULT_ZOOM", 4)
     extra_js = [GMAP.api_url + GMAP.key]
     map_template = 'gis/admin/google.html'
-    list_filter = ('content_type','point' )
+    list_filter = ('content_type', )
     list_display = ('point', 'content_type', 'object_id','link_to_object')
 
 
@@ -44,7 +44,7 @@ class LineAdmin(admin.OSMGeoAdmin,LinkToObjectMixin):
     default_zoom = getattr(settings, "GEO_DEFAULT_ZOOM", 4)
     extra_js = [GMAP.api_url + GMAP.key]
     map_template = 'gis/admin/google.html'
-    list_filter = ('content_type','line' )
+    list_filter = ('content_type', )
     list_display = ('line', 'content_type', 'object_id','link_to_object')
 
 class PolygonAdmin(admin.OSMGeoAdmin,LinkToObjectMixin):
@@ -53,7 +53,7 @@ class PolygonAdmin(admin.OSMGeoAdmin,LinkToObjectMixin):
     default_zoom = getattr(settings, "GEO_DEFAULT_ZOOM", 4)
     extra_js = [GMAP.api_url + GMAP.key]
     map_template = 'gis/admin/google.html'
-    list_filter = ('content_type','polygon' )
+    list_filter = ('content_type', )
     list_display = ('polygon', 'content_type', 'object_id','link_to_object')
 
 admin.site.register(Point, PointAdmin)
